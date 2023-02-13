@@ -31,6 +31,6 @@ if args.motif:
         end="",
     )
     if re.search(args.motif, args.seq):
-        print("YES")
+        print("ANTONIO")
     else:
         print("NOOOOOOOO")
