@@ -25,20 +25,15 @@ args = parser.parse_args()
 # Convert the input sequence to upper case
 args.seq = args.seq.upper()
 
-# Check if the input sequence is composed of valid DNA or RNA nucleotides
-if re.search("^[ACGTU]+$", args.seq):
-    # Check if the input sequence contains the nucleotide thymine (T), indicating that it is DNA
-    if re.search("T", args.seq):
-        print("The sequence is DNA")
-    # Check if the input sequence contains the nucleotide uracil (U), indicating that it is RNA
-    elif re.search("U", args.seq):
-        print("The sequence is RNA")
-    # If neither T nor U are present, the sequence could be either DNA or RNA
-    else:
-        print("The sequence can be DNA or RNA")
-# If the input sequence contains invalid characters, it is not DNA or RNA
+# Check if the input sequence is composed of valid DNA nucleotides
+if re.search("^[ACGT]+$", args.seq):
+    print("The sequence is DNA")
+# Check if the input sequence is composed of valid RNA nucleotides
+elif re.search("^[ACGU]+$", args.seq):
+    print("The sequence is RNA")
+# If neither T nor U are present, the sequence contains invalid characters
 else:
-    print("The sequence is not DNA nor RNA")
+    print("The sequence contains invalid characters and is neither DNA nor RNA")
 
 # Check if the motif argument was provided
 if args.motif:
